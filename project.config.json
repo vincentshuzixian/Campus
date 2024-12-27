@@ -1,0 +1,35 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "miniprogramRoot": "",
+  "compileType": "miniprogram",
+  "projectname": "food-recommend",
+  "setting": {
+    "useCompilerPlugins": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "es6": true,
+    "enhance": true,
+    "minified": true,
+    "condition": false,
+    "compileWorklet": false
+  },
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {},
+  "srcMiniprogramRoot": "",
+  "appid": "wxdbf8f30657c058e3",
+  "libVersion": "3.1.4",
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "cloudfunctionRoot": "cloudfunctions/",
+  "cloud": true
+}

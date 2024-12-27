@@ -1,0 +1,146 @@
+.login-container {
+  min-height: 100vh;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: relative;
+  height: 400rpx;
+  overflow: hidden;
+}
+
+.bg-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.7);
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60rpx;
+  color: #fff;
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.2);
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 26rpx;
+  opacity: 0.9;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.3);
+}
+
+.form-wrapper {
+  margin-top: -50rpx;
+  padding: 0 40rpx;
+}
+
+.form-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.form-header view {
+  padding: 20rpx 40rpx;
+  font-size: 32rpx;
+  color: #666;
+  position: relative;
+}
+
+.form-header view.active {
+  color: #07c160;
+  font-weight: bold;
+}
+
+.form-header view.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 4rpx;
+  background: #07c160;
+  border-radius: 2rpx;
+}
+
+.form-container {
+  background: #fff;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 30rpx;
+  padding-bottom: 10rpx;
+}
+
+.input-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  opacity: 0.5;
+}
+
+.input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #07c160;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  margin-top: 40rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(7,193,96,0.3);
+}
+
+.switch-text {
+  text-align: center;
+  font-size: 26rpx;
+  color: #07c160;
+  margin-top: 30rpx;
+}
+
+.footer-decoration {
+  display: flex;
+  justify-content: space-around;
+  padding: 40rpx;
+  margin-top: auto;
+}
+
+.food-icon {
+  width: 60rpx;
+  height: 60rpx;
+  opacity: 0.6;
+} 

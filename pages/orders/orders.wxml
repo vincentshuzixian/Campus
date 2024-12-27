@@ -1,0 +1,87 @@
+<view class="page">
+  <!-- 订单状态切换 -->
+  <view class="status-tabs">
+    <view class="tab {{currentStatus === 'all' ? 'active' : ''}}" 
+          bindtap="switchStatus" 
+          data-status="all">全部</view>
+    <view class="tab {{currentStatus === 'processing' ? 'active' : ''}}" 
+          bindtap="switchStatus" 
+          data-status="processing">进行中</view>
+    <view class="tab {{currentStatus === 'completed' ? 'active' : ''}}" 
+          bindtap="switchStatus" 
+          data-status="completed">已完成</view>
+  </view>
+
+  <!-- 订单列表 -->
+  <scroll-view class="order-list" scroll-y bindscrolltolower="loadMore">
+    <view class="order-item" wx:for="{{orders}}" wx:key="id">
+      <view class="order-header">
+        <image class="restaurant-logo" src="{{item.restaurantLogo}}" mode="aspectFill"></image>
+        <view class="restaurant-info">
+          <text class="restaurant-name">{{item.restaurantName}}</text>
+          <text class="order-time">{{item.createTime}}</text>
+        </view>
+        <view class="order-status {{item.status}}">{{item.statusText}}</view>
+      </view>
+
+      <view class="order-content">
+        <view class="dishes-preview">
+          <image wx:for="{{item.dishes}}" 
+                 wx:key="id" 
+                 wx:for-item="dish"
+                 src="{{dish.image}}" 
+                 mode="aspectFill"></image>
+        </view>
+        <view class="order-info">
+          <view class="dishes-count">共{{item.totalCount}}件</view>
+          <view class="order-price">¥{{item.totalPrice}}</view>
+        </view>
+      </view>
+
+      <!-- 订单进度 -->
+      <view class="order-progress" wx:if="{{item.status !== 'completed'}}">
+        <view class="progress-item {{item.progress >= 1 ? 'finished' : ''}}">
+          <view class="progress-dot"></view>
+          <text>已接单</text>
+        </view>
+        <view class="progress-line {{item.progress >= 2 ? 'finished' : ''}}"></view>
+        <view class="progress-item {{item.progress >= 2 ? 'finished' : ''}}">
+          <view class="progress-dot"></view>
+          <text>准备中</text>
+        </view>
+        <view class="progress-line {{item.progress >= 3 ? 'finished' : ''}}"></view>
+        <view class="progress-item {{item.progress >= 3 ? 'finished' : ''}}">
+          <view class="progress-dot"></view>
+          <text>{{item.deliveryMethod === 'self' ? '待取餐' : '配送中'}}</text>
+        </view>
+        <view class="progress-line {{item.progress >= 4 ? 'finished' : ''}}"></view>
+        <view class="progress-item {{item.progress >= 4 ? 'finished' : ''}}">
+          <view class="progress-dot"></view>
+          <text>已完成</text>
+        </view>
+      </view>
+
+      <!-- 订单操作 -->
+      <view class="order-actions">
+        <button class="btn" wx:if="{{item.status === 'completed'}}" bindtap="goToComment" data-id="{{item.id}}">
+          评价订单
+        </button>
+        <button class="btn" wx:if="{{item.status === 'processing'}}" bindtap="cancelOrder" data-id="{{item.id}}">
+          取消订单
+        </button>
+        <button class="btn primary" bindtap="reorder" data-id="{{item.id}}">再来一单</button>
+      </view>
+    </view>
+
+    <!-- 加载提示 -->
+    <view class="loading" wx:if="{{loading}}">正在加载...</view>
+    <view class="no-more" wx:if="{{noMore}}">没有更多订单了</view>
+  </scroll-view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{orders.length === 0}}">
+    <image src="/images/empty-orders.png"></image>
+    <text>暂无订单</text>
+    <button class="go-shopping-btn" bindtap="goShopping">去点餐</button>
+  </view>
+</view> 

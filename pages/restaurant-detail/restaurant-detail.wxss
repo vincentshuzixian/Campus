@@ -1,0 +1,412 @@
+.page {
+  background: #f8f8f8;
+  min-height: 100vh;
+}
+
+.cover-section {
+  position: relative;
+  height: 400rpx;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+}
+
+.cover-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: #fff;
+}
+
+.restaurant-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.restaurant-rating {
+  font-size: 24rpx;
+}
+
+.rating-score {
+  color: #ff9900;
+  font-weight: bold;
+  margin-right: 10rpx;
+}
+
+.rating-count {
+  opacity: 0.8;
+}
+
+.info-section {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.info-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+
+.menu-section {
+  background: #fff;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.category-tabs {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 20rpx;
+  white-space: nowrap;
+}
+
+.category-tab {
+  padding: 16rpx 30rpx;
+  font-size: 28rpx;
+  color: #666;
+  position: relative;
+}
+
+.category-tab.active {
+  color: #07c160;
+}
+
+.category-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 30rpx;
+  right: 30rpx;
+  height: 4rpx;
+  background: #07c160;
+  border-radius: 2rpx;
+}
+
+.dishes-list {
+  max-height: calc(100vh - 700rpx);
+}
+
+.dish-item {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.dish-item:last-child {
+  border-bottom: none;
+}
+
+.dish-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.dish-info {
+  flex: 1;
+}
+
+.dish-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.dish-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.dish-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  font-size: 32rpx;
+  color: #ff4d4f;
+  font-weight: bold;
+}
+
+.monthly-sales {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 40rpx;
+  right: 40rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.favorite-btn.active image {
+  animation: heartBeat 0.3s ease-in-out;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.call-btn {
+  margin-left: auto;
+  padding: 8rpx 24rpx;
+  background: #07c160;
+  color: #fff;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+}
+
+.add-to-cart {
+  display: flex;
+  align-items: center;
+}
+
+.minus, .plus {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  background: #07c160;
+  color: #fff;
+}
+
+.minus {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.count {
+  margin: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.cart-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.cart-info {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  position: relative;
+  margin-right: 20rpx;
+}
+
+.cart-icon image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 20rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 20rpx;
+  min-width: 32rpx;
+  text-align: center;
+}
+
+.cart-total {
+  display: flex;
+  flex-direction: column;
+}
+
+.total-price {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ff4d4f;
+}
+
+.total-count {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.add-to-cart-btn {
+  background: #ffd161;
+  margin-right: 20rpx;
+}
+
+.add-to-cart-btn, .checkout-btn {
+  color: #fff;
+  font-size: 28rpx;
+  padding: 0 30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
+}
+
+.checkout-btn {
+  background: #07c160;
+}
+
+.reviews-section {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.review-summary {
+  display: flex;
+  align-items: baseline;
+}
+
+.review-score {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ff9900;
+  margin-right: 10rpx;
+}
+
+.review-count {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.reviews-list {
+  white-space: nowrap;
+  margin: 0 -30rpx;
+  padding: 0 30rpx;
+}
+
+.review-item {
+  display: inline-block;
+  width: 560rpx;
+  margin-right: 20rpx;
+  padding: 20rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  white-space: normal;
+}
+
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.reviewer-avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.reviewer-name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.review-rating {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.rating-text {
+  color: #ff9900;
+  font-size: 24rpx;
+}
+
+.review-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.review-content {
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.review-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.review-images image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 8rpx;
+} 

@@ -1,0 +1,70 @@
+<view class="page">
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-item {{currentFilter === 'cuisine' ? 'active' : ''}}" bindtap="showFilter" data-type="cuisine">
+      <text>菜系</text>
+      <text class="arrow {{showCuisineFilter ? 'up' : 'down'}}"></text>
+    </view>
+    <view class="filter-item {{currentFilter === 'rating' ? 'active' : ''}}" bindtap="showFilter" data-type="rating">
+      <text>评分</text>
+      <text class="arrow {{showRatingFilter ? 'up' : 'down'}}"></text>
+    </view>
+    <view class="filter-item {{currentFilter === 'sort' ? 'active' : ''}}" bindtap="showFilter" data-type="sort">
+      <text>排序</text>
+      <text class="arrow {{showSortFilter ? 'up' : 'down'}}"></text>
+    </view>
+  </view>
+
+  <!-- 筛选选项 -->
+  <view class="filter-options" wx:if="{{showCuisineFilter}}">
+    <view class="option {{selectedCuisine === item ? 'active' : ''}}" 
+          wx:for="{{cuisineOptions}}" 
+          wx:key="*this"
+          bindtap="selectCuisine"
+          data-cuisine="{{item}}">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="filter-options" wx:if="{{showRatingFilter}}">
+    <view class="option {{selectedRating === item.value ? 'active' : ''}}" 
+          wx:for="{{ratingOptions}}" 
+          wx:key="value"
+          bindtap="selectRating"
+          data-rating="{{item.value}}">
+      {{item.label}}
+    </view>
+  </view>
+
+  <view class="filter-options" wx:if="{{showSortFilter}}">
+    <view class="option {{selectedSort === item.value ? 'active' : ''}}" 
+          wx:for="{{sortOptions}}" 
+          wx:key="value"
+          bindtap="selectSort"
+          data-sort="{{item.value}}">
+      {{item.label}}
+    </view>
+  </view>
+
+  <!-- 餐厅列表 -->
+  <scroll-view scroll-y class="restaurant-list" bindscrolltolower="loadMore">
+    <view class="restaurant-item" wx:for="{{restaurants}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <image class="restaurant-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="restaurant-info">
+        <view class="restaurant-name">{{item.name}}</view>
+        <view class="restaurant-rating">
+          <text class="rating-score">{{item.rating}}</text>
+          <text class="rating-count">({{item.ratingCount}}条评价)</text>
+        </view>
+        <view class="restaurant-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+        </view>
+        <view class="restaurant-desc">{{item.description}}</view>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="loading" wx:if="{{loading}}">正在加载...</view>
+    <view class="no-more" wx:if="{{noMore}}">没有更多了</view>
+  </scroll-view>
+</view> 

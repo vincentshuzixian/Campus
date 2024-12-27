@@ -1,0 +1,54 @@
+<view class="page">
+  <block wx:if="{{cartItems.length > 0}}">
+    <!-- 餐厅分组列表 -->
+    <view class="restaurant-group" wx:for="{{groupedItems}}" wx:key="restaurantId">
+      <view class="restaurant-header">
+        <view class="restaurant-info">
+          <image class="restaurant-logo" src="{{item.restaurantLogo}}" mode="aspectFill"></image>
+          <text class="restaurant-name">{{item.restaurantName}}</text>
+        </view>
+        <view class="delete-restaurant" bindtap="deleteRestaurant" data-restaurant-id="{{item.restaurantId}}">
+          清空
+        </view>
+      </view>
+
+      <!-- 菜品列表 -->
+      <view class="dish-list">
+        <view class="dish-item" wx:for="{{item.dishes}}" wx:key="id" wx:for-item="dish">
+          <image class="dish-image" src="{{dish.image}}" mode="aspectFill"></image>
+          <view class="dish-info">
+            <view class="dish-name">{{dish.name}}</view>
+            <view class="dish-price">¥{{dish.price}}</view>
+          </view>
+          <view class="quantity-control">
+            <view class="minus {{dish.quantity > 0 ? 'active' : ''}}" 
+                  bindtap="decreaseQuantity" 
+                  data-restaurant-id="{{item.restaurantId}}"
+                  data-dish-id="{{dish.id}}">-</view>
+            <view class="quantity">{{dish.quantity}}</view>
+            <view class="plus" 
+                  bindtap="increaseQuantity"
+                  data-restaurant-id="{{item.restaurantId}}"
+                  data-dish-id="{{dish.id}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部结算栏 -->
+    <view class="checkout-bar">
+      <view class="total-info">
+        <text class="total-price">¥{{totalPrice}}</text>
+        <text class="total-count">共{{totalCount}}件</text>
+      </view>
+      <button class="checkout-btn" bindtap="checkout">去结算</button>
+    </view>
+  </block>
+
+  <!-- 空购物车提示 -->
+  <view class="empty-cart" wx:else>
+    <image src="/images/empty-cart.png"></image>
+    <text>购物车是空的</text>
+    <button class="go-shopping-btn" bindtap="goShopping">去逛逛</button>
+  </view>
+</view> 

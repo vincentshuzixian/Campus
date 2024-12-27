@@ -1,0 +1,55 @@
+<view class="page">
+  <!-- 菜品图片 -->
+  <swiper class="dish-images" indicator-dots circular>
+    <swiper-item wx:for="{{dish.images}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 菜品信息 -->
+  <view class="dish-info">
+    <view class="dish-header">
+      <view class="dish-name">{{dish.name}}</view>
+      <view class="dish-price">
+        <text class="price">¥{{dish.price}}</text>
+        <text class="monthly-sales">月售{{dish.monthlySales}}份</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">菜品描述</view>
+      <view class="dish-desc">{{dish.description}}</view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">推荐搭配</view>
+      <scroll-view class="recommended-dishes" scroll-x>
+        <view class="recommended-item" 
+              wx:for="{{dish.recommendations}}" 
+              wx:key="id"
+              bindtap="goToDish"
+              data-id="{{item.id}}">
+          <image src="{{item.image}}" mode="aspectFill"></image>
+          <view class="recommended-name">{{item.name}}</view>
+          <view class="recommended-price">¥{{item.price}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="restaurant-info" bindtap="goToRestaurant">
+      <image class="restaurant-logo" src="{{dish.restaurantLogo}}" mode="aspectFill"></image>
+      <text>{{dish.restaurantName}}</text>
+    </view>
+    <view class="actions">
+      <view class="quantity-control">
+        <view class="minus {{quantity > 0 ? 'active' : ''}}" bindtap="decreaseQuantity">-</view>
+        <view class="quantity">{{quantity}}</view>
+        <view class="plus" bindtap="increaseQuantity">+</view>
+      </view>
+      <button class="add-to-cart-btn" bindtap="addToCart">加入购物车</button>
+    </view>
+  </view>
+</view> 

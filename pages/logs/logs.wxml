@@ -1,0 +1,75 @@
+<view class="page">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <view class="user-info-wrapper">
+      <image class="avatar {{isLoggedIn ? 'logged' : ''}}" 
+             src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" 
+             mode="aspectFill"></image>
+      <view class="user-info">
+        <block wx:if="{{isLoggedIn}}">
+          <text class="nickname">{{userInfo.nickName}}</text>
+          <text class="login-status">已登录</text>
+        </block>
+        <block wx:else>
+          <text class="nickname">未登录</text>
+          <text class="login-status">点击登录账号</text>
+        </block>
+      </view>
+    </view>
+    <view class="card-decoration"></view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-list">
+    <view class="menu-group">
+      <view class="menu-item hover-effect" bindtap="goToOrders">
+        <view class="menu-item-left">
+          <image class="menu-icon" src="/images/orders.png" mode="aspectFit"></image>
+          <text class="menu-text">历史订单</text>
+        </view>
+        <image class="arrow" src="/images/arrow-right.png" mode="aspectFit"></image>
+      </view>
+      <view class="menu-item hover-effect" bindtap="goToAddress">
+        <view class="menu-item-left">
+          <image class="menu-icon" src="/images/address.png" mode="aspectFit"></image>
+          <text class="menu-text">地址管理</text>
+        </view>
+        <image class="arrow" src="/images/arrow-right.png" mode="aspectFit"></image>
+      </view>
+      <view class="menu-item hover-effect" bindtap="goToContact">
+        <view class="menu-item-left">
+          <image class="menu-icon" src="/images/contact.png" mode="aspectFit"></image>
+          <text class="menu-text">联系方式</text>
+        </view>
+        <image class="arrow" src="/images/arrow-right.png" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <view class="menu-group">
+      <view class="menu-item hover-effect" bindtap="changePassword" wx:if="{{isLoggedIn}}">
+        <view class="menu-item-left">
+          <image class="menu-icon" src="/images/settings.png" mode="aspectFit"></image>
+          <text class="menu-text">修改密码</text>
+        </view>
+        <image class="arrow" src="/images/arrow-right.png" mode="aspectFit"></image>
+      </view>
+      <view class="menu-item hover-effect" bindtap="contactService">
+        <view class="menu-item-left">
+          <image class="menu-icon" src="/images/service.png" mode="aspectFit"></image>
+          <text class="menu-text">联系客服</text>
+        </view>
+        <image class="arrow" src="/images/arrow-right.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录按钮 -->
+  <view class="logout-section" wx:if="{{isLoggedIn}}">
+    <button class="logout-btn hover-effect" bindtap="logout">退出登录</button>
+  </view>
+
+  <!-- 底部版权信息 -->
+  <view class="footer">
+    <text class="copyright">美食推荐 v1.0.0</text>
+  </view>
+</view> 
